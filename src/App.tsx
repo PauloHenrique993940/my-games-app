@@ -303,7 +303,7 @@ const App: React.FC = () => {
             </p>
             <div className="actions">
               <button
-                className="btn primary"
+                className="btn btn-Button primary"
                 onClick={() => {
                   setPage('home');
                   setSelectedGameId(null);
