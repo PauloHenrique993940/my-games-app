@@ -1,12 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import './App.css'
+import './App.css';
+import { gameImages } from './assets/images';
 
-/**
- * App.tsx
- * - Single component app (React + TypeScript)
- * - Inline CSS (no Tailwind), theme variables (dark/light)
- * - Simula: login, catálogo com busca/filtro, detalhe, perfil, ranking, admin CRUD
- */
 
 /* ---------------------- Types ---------------------- */
 type Game = {
@@ -33,43 +28,41 @@ const SAMPLE_GAMES: Game[] = [
   {
     id: 'g1',
     title: 'Cyberpunk Odyssey',
-    description:
-      'Exploração urbana em um mundo futurista. Missões, escolhas e combate tático.',
+    description: 'Exploração urbana futurista.',
     genre: ['RPG', 'Aventura'],
-    thumbnail: 'https://picsum.photos/seed/cyber/800/450',
+    thumbnail: gameImages.cyberpunk,
     rating: 4.6,
     releaseDate: '2024-09-10',
   },
   {
     id: 'g2',
     title: 'Star Ops: Frontline',
-    description:
-      'FPS tático com equipes, mapas dinâmicos e progressão de armas.',
+    description: 'FPS tático com equipes.',
     genre: ['FPS', 'Multiplayer'],
-    thumbnail: 'https://picsum.photos/seed/star/800/450',
+    thumbnail: gameImages.starops,
     rating: 4.8,
     releaseDate: '2023-05-25',
   },
   {
     id: 'g3',
     title: 'Mystic Realm',
-    description: 'RPG de fantasia com crafting, guildas e mundo aberto.',
+    description: 'RPG de fantasia.',
     genre: ['RPG', 'Fantasy'],
-    thumbnail: 'https://picsum.photos/seed/mystic/800/450',
+    thumbnail: gameImages.mystic,
     rating: 4.3,
     releaseDate: '2022-11-02',
   },
   {
     id: 'g4',
     title: 'Speed Drift Legends',
-    description:
-      'Corridas arcade com drift, customização e campeonatos online.',
+    description: 'Corridas arcade.',
     genre: ['Corrida', 'Arcade'],
-    thumbnail: 'https://picsum.photos/seed/speed/800/450',
+    thumbnail: gameImages.speed,
     rating: 4.1,
     releaseDate: '2021-07-12',
   },
 ];
+
 
 /* ---------------------- Helper ---------------------- */
 const uid = (prefix = '') =>
@@ -232,7 +225,6 @@ const App: React.FC = () => {
   };
 
   /* ---------- CSS (inline in JSX) ---------- */
-  
 
   /* ---------- Render ---------- */
   return (
@@ -942,7 +934,7 @@ const App: React.FC = () => {
 
         <footer style={{ marginTop: 18 }}>
           <div style={{ color: 'var(--muted)' }}>
-            Demo criada com React + Vite • Tudo em 1 componente • Tema: {theme}
+            Demo criada com React + Vite • Tema: {theme}
           </div>
         </footer>
       </div>
