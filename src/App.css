@@ -238,12 +238,7 @@ nav.menu button.active {
   box-shadow: 0 0 5px rgba(0, 224, 255, 0.1);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  /* Cards um pouco maiores */
-  gap: 16px;
-}
+
 
 .card {
   /* Efeito de vidro/painel */
@@ -251,6 +246,8 @@ nav.menu button.active {
   border-radius: var(--border-radius);
   overflow: hidden;
   display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   flex-direction: column;
   border: 1px solid rgba(0, 224, 255, 0.2);
   transition: transform 0.2s, box-shadow 0.2s;
@@ -460,9 +457,16 @@ footer {
 }
 
 /* --- MEDIA QUERIES --- */
+
+/* Tablets e notebooks menores */
 @media (max-width: 980px) {
   .layout {
     grid-template-columns: 1fr;
+  }
+
+  nav.menu {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .detail {
@@ -472,5 +476,173 @@ footer {
   .detail img {
     width: 100%;
   }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-left {
+    width: 100%;
+  }
+
+  .hero .actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 }
 
+/* Celulares grandes */
+@media (max-width: 760px) {
+  header.app-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .brand {
+    flex-direction: column;
+  }
+
+  .menu {
+    width: 100%;
+  }
+
+  nav.menu {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  .card img {
+    height: 120px;
+  }
+}
+
+/* Celulares médios */
+@media (max-width: 560px) {
+  .app {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  nav.menu button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 16px;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 420px) {
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .card img {
+    height: 100px;
+  }
+
+  .hero .actions button {
+    width: 100%;
+  }
+
+  .chip {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+/* EVITAR OVERFLOW GLOBAL */
+body,
+html {
+  overflow-x: hidden;
+}
+
+/* GARANTIR QUE A LAYOUT NÃO ESTOURE */
+.container,
+.layout,
+.panel,
+.grid {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* GRID MAIS ESTÁVEL (CARDS NÃO SAEM PARA FORA) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+/* IMAGENS NUNCA ESTOURAM */
+.card img,
+.detail img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* AJUSTE ESPECÍFICO PARA VIEW DE DETALHE */
+.detail {
+  display: flex;
+  gap: 20px;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.detail>img {
+  flex: 1 1 350px;
+  min-width: 280px;
+}
+
+/* BOTÕES GRANDES NÃO EMPURRAM O LAYOUT */
+.actions button,
+.btn {
+  white-space: nowrap;
+}
+
+/* EVITAR EXPANSÃO DA SIDEBAR */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+}
+
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
